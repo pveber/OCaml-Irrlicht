@@ -15,6 +15,7 @@ class font : obj -> object
   inherit Irr_base.reference_counted
   method draw : string -> int Irr_core.rect -> ?hcenter:bool -> ?vcenter:bool ->
     ?clip:int Irr_core.rect -> int Irr_core.color -> unit
+  method get_dimension : string -> int Irr_core.dimension_2d
 end
 
 (** Class IGUIElement *)

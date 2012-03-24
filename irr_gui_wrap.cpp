@@ -45,6 +45,13 @@ extern "C" value ml_IGUIFont_draw_bytecode(value* argv, int argn) {
 			argv[5], argv[6]);
 }
 
+extern "C" value ml_IGUIFont_getDimension(value v_font, value v_text) {
+  int text_size = caml_string_length(v_text);
+  wchar_t text[2 * (text_size + 1)];
+  mbstowcs(text, String_val(v_text), 2 * text_size);
+  return copy_dimension2d_u32(((IGUIFont*) v_font)->getDimension(text));
+}
+
 /* Stub for class IGUIStaticText */
 
 extern "C" value ml_IGUIStaticText_setOverrideColor(value v_text, value v_color)

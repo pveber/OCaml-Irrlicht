@@ -34,10 +34,16 @@ external font_draw :
       "ml_IGUIFont_draw_bytecode"
       "ml_IGUIFont_draw_native"
 
+external font_get_dimension :
+  obj -> string -> int Irr_core.dimension_2d = "ml_IGUIFont_getDimension"
+
+
 class font obj = object(self)
   inherit Irr_base.reference_counted obj
   method draw text pos ?(hcenter = false) ?(vcenter = false) ?clip color =
     font_draw self#obj text pos color hcenter vcenter clip
+  method get_dimension text = 
+    font_get_dimension self#obj text
 end
 
 (******************************************************************************)
